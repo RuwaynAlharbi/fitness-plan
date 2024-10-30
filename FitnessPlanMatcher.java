@@ -1,5 +1,3 @@
-// src/FitnessPlanMatcher.java
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +6,10 @@ public class FitnessPlanMatcher {
 
     public FitnessPlanMatcher() {
         this.plans = new ArrayList<>();
-        loadPlans(); // Initialize with predefined plans
+        loadPlans();
     }
 
-    // Predefined fitness plans
+    // تحميل خطط افتراضية
     private void loadPlans() {
         plans.add(new FitnessPlan("Cardio", 150, "Beginner", "Weight Loss"));
         plans.add(new FitnessPlan("Strength Training", 120, "Intermediate", "Muscle Building"));
@@ -19,10 +17,10 @@ public class FitnessPlanMatcher {
         plans.add(new FitnessPlan("Yoga", 120, "Beginner", "Stress Relief"));
     }
 
-    // Match plans based on user preferences
+    // مطابقة الخطط باستخدام مبدأ الدفاع في العمق (Defense-in-Depth)
     public List<FitnessPlan> matchPlans(User user) {
-        if (user == null) {
-            System.out.println("Access denied: User not authenticated.");
+        if (user == null || !"Member".equalsIgnoreCase(user.getRole())) {
+            System.out.println("Access denied: User not authenticated or lacks permission.");
             return new ArrayList<>();
         }
 
