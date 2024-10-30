@@ -1,6 +1,5 @@
-// src/User.java
-
 public class User {
+    // خصائص المستخدم المحدودة لضمان مبدأ الأقل امتيازًا (Least Privilege)
     private String username;
     private String password;
     private String fitnessGoal;
@@ -8,29 +7,20 @@ public class User {
     private String medicalHistory;
     private String role;
 
-    // Constructor with role validation
-    public User(String username, String password, String fitnessGoal, String fitnessLevel, String medicalHistory, String role) {
+    // المُنشئ الرئيسي لإعداد جميع الخصائص وضمان دور 'Member' فقط
+    public User(String username, String password, String fitnessGoal, String fitnessLevel, String medicalHistory) {
         this.username = username;
         this.password = password;
         this.fitnessGoal = fitnessGoal;
         this.fitnessLevel = fitnessLevel;
         this.medicalHistory = medicalHistory;
-        setRole(role); // Validate role
+        this.role = "Member"; // تعيين دور 'Member' مباشرةً
     }
 
-    // Method to enforce valid role assignment (only Member)
-    private void setRole(String role) {
-        if (!"Member".equalsIgnoreCase(role)) {
-            throw new IllegalArgumentException("Invalid role: Only 'Member' role is allowed");
-        }
-        this.role = role;
-    }
-
-    // Getters
+    // دوال Getter للبيانات الأساسية فقط (Least Privilege)
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getFitnessGoal() { return fitnessGoal; }
     public String getFitnessLevel() { return fitnessLevel; }
-    public String getMedicalHistory() { return medicalHistory; }
     public String getRole() { return role; }
 }
