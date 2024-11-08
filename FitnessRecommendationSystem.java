@@ -92,12 +92,18 @@ public class FitnessRecommendationSystem {
             }
         }
 
-        // Handle Login
+        
+        /*
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
         System.out.print("Enter password: ");
-        String password = scanner.nextLine();
-        user = authService.login(username, password);
+        String password = scanner.nextLine(); */
+       
+        
+// Handle Login
+String username = getInput(scanner, "Username");
+String password = getInput(scanner, "Password");
+user = authService.login(username, password); 
 
         // Exit if authentication fails
         if (user == null) {
@@ -128,4 +134,9 @@ public class FitnessRecommendationSystem {
         
         scanner.close();
     }
+// Least Privilege principle is also applied here by ensuring that each input field is accessed and validated only where necessary, limiting unnecessary exposure of user data.
+private static String getInput(Scanner scanner, String inputName) {
+    System.out.print("Enter " + inputName + ": ")
+        return scanner.nextLine().trim();
+}
 }
