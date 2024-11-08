@@ -134,7 +134,7 @@ user = authService.login(username, password);
         
         scanner.close();
     }
-// Least Privilege principle is also applied here by ensuring that each input field is accessed and validated only where necessary, limiting unnecessary exposure of user data.
+// Least Privilege principle is also applied in the getInput method by ensuring that each input field is accessed and validated only where necessary, limiting unnecessary exposure of user data.
 private static String getInput(Scanner scanner, String inputName) {
     System.out.print("Enter " + inputName + ": ")
         return scanner.nextLine().trim();
