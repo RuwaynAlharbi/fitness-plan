@@ -76,13 +76,18 @@ public class FitnessRecommendationSystem {
         if ("1".equals(option)) {
             boolean signupSuccess = false;
             while (!signupSuccess) {
-                System.out.print("Enter a new username: ");
+                
+               /* System.out.print("Enter a new username: ");
                 String username = scanner.nextLine();
                 System.out.print("Enter a password: ");
                 String password = scanner.nextLine();
                 System.out.print("Choose your role (Member): ");
-                String role = scanner.nextLine();
-
+                String role = scanner.nextLine();*/
+                
+                String username = getInput(scanner, "new username");
+                String password = getInput(scanner, "new password");
+                String role = getInput(scanner, "your role (Member)");
+                
                 if (!"Member".equalsIgnoreCase(role)) {
                     System.out.println("Invalid role. Only 'Member' role is allowed.");
                     continue;
