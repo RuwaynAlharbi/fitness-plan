@@ -1,63 +1,3 @@
-/*import java.util.List;
-import java.util.Scanner;
-
-public class FitnessRecommendationSystem {
-    public static void main(String[] args) {
-        AuthenticationService authService = new AuthenticationService();
-        FitnessPlanMatcher planMatcher = new FitnessPlanMatcher();
-        Scanner scanner = new Scanner(System.in);
-        User user = null;
-
-        // خيارات تسجيل الدخول أو التسجيل
-        while (user == null) {
-            System.out.println("Welcome! Please choose an option:\n1. Sign Up\n2. Login");
-            String option = scanner.nextLine();
-
-            if ("1".equals(option)) {
-                System.out.print("Enter a new username: ");
-                String username = scanner.nextLine();
-                System.out.print("Enter a password (at least 8 characters, including uppercase, lowercase, and a special character): ");
-                String password = scanner.nextLine();
-                authService.signup(username, password);
-            } else if ("2".equals(option)) {
-                System.out.print("Enter username: ");
-                String username = scanner.nextLine();
-                System.out.print("Enter password: ");
-                String password = scanner.nextLine();
-                user = authService.login(username, password);
-            } else {
-                System.out.println("Invalid option, please choose 1 or 2.");
-            }
-        }
-
-        // جمع تفضيلات اللياقة من المستخدم
-        System.out.print("Enter your primary fitness goal (e.g., Weight Loss, Muscle Building): ");
-        String fitnessGoal = scanner.nextLine();
-        System.out.print("Enter your fitness level (Beginner, Intermediate, Advanced): ");
-        String fitnessLevel = scanner.nextLine();
-
-        // إعداد مستخدم مخصص وفق التفضيلات
-        user = new User(user.getUsername(), user.getPassword(), fitnessGoal, fitnessLevel, null);
-
-        // عرض الخطط المناسبة
-        List<FitnessPlan> matchedPlans = planMatcher.matchPlans(user);
-        System.out.println("\nRecommended Fitness Plans:");
-        if (matchedPlans.isEmpty()) {
-            System.out.println("No matching fitness plans found for your preferences.");
-        } else {
-            System.out.printf("%-20s %-15s %-10s %-15s\n", "Category", "Health Goal", "Level", "Duration");
-            for (FitnessPlan plan : matchedPlans) {
-                System.out.printf("%-20s %-15s %-10s %-15d\n", plan.getCategory(), plan.getHealthGoal(), plan.getRequiredLevel(), plan.getMinDuration());
-            }
-        }
-
-        scanner.close();
-    }
-}
-*/
-
-
-// بداية الكود الي عدلته بشرى 
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,7 +8,7 @@ public class FitnessRecommendationSystem {
         Scanner scanner = new Scanner(System.in);
         User user = null;
 
-        // Prompt for sign-up or login
+        // Prompt for Sign-Up or Login
         System.out.println("Welcome! Please choose an option:\n1. Sign Up\n2. Login");
         String option = scanner.nextLine();
 
@@ -76,18 +16,10 @@ public class FitnessRecommendationSystem {
         if ("1".equals(option)) {
             boolean signupSuccess = false;
             while (!signupSuccess) {
-                
-               /* System.out.print("Enter a new username: ");
-                String username = scanner.nextLine();
-                System.out.print("Enter a password: ");
-                String password = scanner.nextLine();
-                System.out.print("Choose your role (Member): ");
-                String role = scanner.nextLine();*/
-                
                 String username = getInput(scanner, "new username");
                 String password = getInput(scanner, "new password");
                 String role = getInput(scanner, "your role (Member)");
-                
+
                 if (!"Member".equalsIgnoreCase(role)) {
                     System.out.println("Invalid role. Only 'Member' role is allowed.");
                     continue;
@@ -97,18 +29,10 @@ public class FitnessRecommendationSystem {
             }
         }
 
-        
-        /*
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine(); */
-       
-        
-// Handle Login
-String username = getInput(scanner, "Username");
-String password = getInput(scanner, "Password");
-user = authService.login(username, password); 
+        // Handle Login
+        String username = getInput(scanner, "username");
+        String password = getInput(scanner, "password");
+        user = authService.login(username, password);
 
         // Exit if authentication fails
         if (user == null) {
@@ -116,32 +40,32 @@ user = authService.login(username, password);
             return;
         }
 
-        // Collect fitness preferences for recommendation
-        System.out.print("Enter your primary fitness goal (e.g., Weight Loss, Muscle Building): ");
+        // Collect fitness preferences
+        System.out.print("Enter your primary fitness goal (e.g., Weight Loss, Muscle Building, Improve Flexibility, Stress Relief): ");
         String fitnessGoal = scanner.nextLine();
         System.out.print("Enter your fitness level (Beginner, Intermediate, Advanced): ");
         String fitnessLevel = scanner.nextLine();
-        
+
         // Set user preferences
         user = new User(user.getUsername(), user.getPassword(), fitnessGoal, fitnessLevel, null, "Member");
 
         // Retrieve matching fitness plans
         List<FitnessPlan> matchedPlans = planMatcher.matchPlans(user);
         System.out.println("\nRecommended Fitness Plans:");
-        
         if (matchedPlans.isEmpty()) {
             System.out.println("No matching fitness plans found for your preferences.");
         } else {
             for (FitnessPlan plan : matchedPlans) {
-                System.out.println(plan.toString());
+                System.out.println(plan);
             }
         }
-        
+
         scanner.close();
     }
-// Least Privilege principle is also applied in the getInput method by ensuring that each input field is accessed and validated only where necessary, limiting unnecessary exposure of user data.
-private static String getInput(Scanner scanner, String inputName) {
-    System.out.print("Enter " + inputName + ": ")
+
+    // Helper method to get input from the user
+    private static String getInput(Scanner scanner, String inputName) {
+        System.out.print("Enter " + inputName + ": ");
         return scanner.nextLine().trim();
-}
+    }
 }
