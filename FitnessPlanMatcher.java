@@ -13,19 +13,13 @@ public class FitnessPlanMatcher {
     private void loadPlans() {
         // Beginner-level plans
         plans.add(new FitnessPlan("Cardio", 150, "Beginner", "Weight Loss"));
-
-        /* to make the matchedPlans.isEmpty() condition work
-        plans.add(new FitnessPlan("Yoga", 120, "Beginner", "Stress Relief"));*/
-
+        plans.add(new FitnessPlan("Yoga", 120, "Beginner", "Stress Relief"));
         plans.add(new FitnessPlan("Flexibility", 90, "Beginner", "Improve Flexibility"));
         plans.add(new FitnessPlan("Walking", 180, "Beginner", "Weight Loss"));
 
         // Intermediate-level plans
         plans.add(new FitnessPlan("Strength Training", 120, "Intermediate", "Muscle Building"));
-
-        /* to make the matchedPlans.isEmpty() condition work
-        plans.add(new FitnessPlan("HIIT", 90, "Intermediate", "Weight Loss"));*/
-
+        plans.add(new FitnessPlan("HIIT", 90, "Intermediate", "Weight Loss"));
         plans.add(new FitnessPlan("Pilates", 120, "Intermediate", "Improve Flexibility"));
         plans.add(new FitnessPlan("Cycling", 150, "Intermediate", "Stress Relief"));
 
@@ -37,10 +31,6 @@ public class FitnessPlanMatcher {
 
         // General plans across levels
         plans.add(new FitnessPlan("Swimming", 150, "Beginner", "Stress Relief"));
-
-        /* to make the matchedPlans.isEmpty() condition work
-        plans.add(new FitnessPlan("Swimming", 180, "Intermediate", "Weight Loss"));*/
-
         plans.add(new FitnessPlan("Swimming", 200, "Advanced", "Muscle Building"));
         plans.add(new FitnessPlan("Dancing", 120, "Beginner", "Stress Relief"));
         plans.add(new FitnessPlan("Dancing", 150, "Intermediate", "Weight Loss"));
