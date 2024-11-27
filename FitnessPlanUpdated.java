@@ -1,3 +1,6 @@
+// CLASS NO LONGER IN USE
+
+
 /*
 //define possible fitness levels
 public enum FitnessLevel {
@@ -47,3 +50,4 @@ public class FitnessPlan {
         return String.format("%s Plan (%s, %s level): %d minutes/week", category, healthGoal, requiredLevel, minDuration);
     }
 }
+*/
