@@ -25,7 +25,10 @@ public class FitnessRecommendationSystem {
                     continue;
                 }
 
-                signupSuccess = authService.signup(username, password, role);
+                System.out.println("Enter additional details to complete the sign-up process:");
+                int age = Integer.parseInt(getInput(scanner, "Age"));
+
+                signupSuccess = authService.signup(username, password, role, age, null, null);
             }
         }
 
@@ -41,13 +44,21 @@ public class FitnessRecommendationSystem {
         }
 
         // Collect fitness preferences
+        System.out.println("Please provide additional details for personalized fitness recommendations:");
         System.out.print("Enter your primary fitness goal (e.g., Weight Loss, Muscle Building, Improve Flexibility, Stress Relief): ");
         String fitnessGoal = scanner.nextLine();
         System.out.print("Enter your fitness level (Beginner, Intermediate, Advanced): ");
         String fitnessLevel = scanner.nextLine();
+        System.out.print("Do you have any illnesses (e.g., High blood pressure, Joint issues, None)? ");
+        String illnesses = scanner.nextLine();
+        System.out.print("Do you have any surgeries (e.g., Minor surgeries, Surgeries in the past year, None)? ");
+        String surgeries = scanner.nextLine();
 
         // Set user preferences
-        user = new User(user.getUsername(), user.getPassword(), fitnessGoal, fitnessLevel, null, "Member");
+        user.setFitnessGoal(fitnessGoal);
+        user.setFitnessLevel(fitnessLevel);
+        user.setIllnesses(illnesses);
+        user.setSurgeries(surgeries);
 
         // Retrieve matching fitness plans
         List<FitnessPlan> matchedPlans = planMatcher.matchPlans(user);
