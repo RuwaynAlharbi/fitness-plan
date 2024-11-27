@@ -14,7 +14,7 @@ public class AuthenticationService {
 
     // Seed default users for testing
     private void seedDefaultUsers() {
-        users.put("member1", new User("member1", hashPassword("Password@123"), null, null, null, "Member"));
+        users.put("member1", new User("member1", hashPassword("Password@123"), "Weight Loss", "Beginner", "Member", 25, "None", "None"));
     }
 
     // Helper method to hash passwords
@@ -29,8 +29,8 @@ public class AuthenticationService {
         }
     }
 
-    // User sign-up with hashed password
-    public boolean signup(String username, String password, String role) {
+    // User sign-up with hashed password and additional attributes
+    public boolean signup(String username, String password, String role, int age, String illnesses, String surgeries) {
         if (users.containsKey(username)) {
             System.out.println("Username already exists.");
             return false;
@@ -41,10 +41,10 @@ public class AuthenticationService {
             System.out.println("Password must be at least 8 characters, include uppercase, lowercase, and a special character.");
             return false;
         }
-
+        // Hash the password and create a new user
         String hashedPassword = hashPassword(password);
         if (hashedPassword != null) {
-            User newUser = new User(username, hashedPassword, null, null, null, role);
+            User newUser = new User(username, hashedPassword, null, null, role, age, illnesses, surgeries);
             users.put(username, newUser);
             System.out.println("Signup successful.");
             return true;
@@ -70,5 +70,22 @@ public class AuthenticationService {
                 password.matches(".*[A-Z].*") &&  // At least one uppercase letter
                 password.matches(".*[a-z].*") &&  // At least one lowercase letter
                 password.matches(".*[!@#$%^&*()].*"); // At least one special character
+    }
+
+    // Helper method to get integer input from the user
+    private int getIntInput(String prompt) {
+        try {
+            System.out.print(prompt);
+            return Integer.parseInt(System.console().readLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+            return getIntInput(prompt);
+        }
+    }
+
+    // Helper method to get string input from the user
+    private String getStringInput(String prompt) {
+        System.out.print(prompt);
+        return System.console().readLine().trim();
     }
 }
