@@ -14,7 +14,7 @@ public class AuthenticationService {
 
     // Seed default users for testing
     private void seedDefaultUsers() {
-        users.put("member1", new User("member1", hashPassword("Password@123"), "Weight Loss", "Beginner", "Member", 25, "None", "None"));
+        users.put("member1", new User("member1", hashPassword("Password@123"), FitnessPlan.FitnessGoal.Weight_Loss, FitnessPlan.FitnessLevel.Beginner, "Member", 25, "None", "None"));
     }
 
     // Helper method to hash passwords
@@ -41,6 +41,7 @@ public class AuthenticationService {
             System.out.println("Password must be at least 8 characters, include uppercase, lowercase, and a special character.");
             return false;
         }
+
         // Hash the password and create a new user
         String hashedPassword = hashPassword(password);
         if (hashedPassword != null) {
@@ -71,21 +72,12 @@ public class AuthenticationService {
                 password.matches(".*[a-z].*") &&  // At least one lowercase letter
                 password.matches(".*[!@#$%^&*()].*"); // At least one special character
     }
-
-    // Helper method to get integer input from the user
-    private int getIntInput(String prompt) {
-        try {
-            System.out.print(prompt);
-            return Integer.parseInt(System.console().readLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a valid number.");
-            return getIntInput(prompt);
+    public void deleteUser(String username){
+        if(users.containsKey(username))
+        {
+        users.remove(username);}
+        else{
+            System.out.println("No such user exists");
         }
-    }
-
-    // Helper method to get string input from the user
-    private String getStringInput(String prompt) {
-        System.out.print(prompt);
-        return System.console().readLine().trim();
     }
 }
