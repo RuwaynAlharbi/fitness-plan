@@ -45,7 +45,7 @@ public class FitnessRecommendationSystem {
 
         if (user.getRole().equalsIgnoreCase("Admin")){
             System.out.println("Welcome to admin panel");
-            System.out.println("1. Edit users\n2. Exit");
+            System.out.println("1. Delete users\n2. Exit");
             int choice;
             choice = scanner.nextInt();
             scanner.nextLine();
