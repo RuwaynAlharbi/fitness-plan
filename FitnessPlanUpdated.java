@@ -1,3 +1,4 @@
+/*
 //define possible fitness levels
 public enum FitnessLevel {
     BEGINNER, INTERMEDIATE, ADVANCED
