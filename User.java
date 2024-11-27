@@ -2,8 +2,8 @@ public class User {
     // User attributes, restricted for encapsulation (Least Privilege principle)
     private String username;
     private String password;
-    private String fitnessGoal;
-    private String fitnessLevel;
+    private FitnessPlan.FitnessGoal fitnessGoal;
+    private FitnessPlan.FitnessLevel fitnessLevel;
     private String role;
     private int age=0; // New attribute
     private String illnesses; // New attribute
@@ -13,7 +13,7 @@ public class User {
      * Constructor to initialize all user attributes.
      * Sets the role to "Member" by default.
      */
-    public User(String username, String password, String fitnessGoal, String fitnessLevel, int age, String illnesses, String surgeries) {
+    public User(String username, String password, FitnessPlan.FitnessGoal fitnessGoal, FitnessPlan.FitnessLevel fitnessLevel, int age, String illnesses, String surgeries) {
         this.username = username;
         this.password = password;
         this.fitnessGoal = fitnessGoal;
@@ -27,7 +27,7 @@ public class User {
     /**
      * Constructor to initialize user attributes with a specified role.
      */
-    public User(String username, String password, String fitnessGoal, String fitnessLevel, String role, int age, String illnesses, String surgeries) {
+    public User(String username, String password, FitnessPlan.FitnessGoal fitnessGoal, FitnessPlan.FitnessLevel fitnessLevel, String role, int age, String illnesses, String surgeries) {
         this.username = username;
         this.password = password;
         this.fitnessGoal = fitnessGoal;
@@ -47,11 +47,11 @@ public class User {
         return password;
     }
 
-    public String getFitnessGoal() {
+    public FitnessPlan.FitnessGoal getFitnessGoal() {
         return fitnessGoal;
     }
 
-    public String getFitnessLevel() {
+    public FitnessPlan.FitnessLevel getFitnessLevel() {
         return fitnessLevel;
     }
 
@@ -71,11 +71,11 @@ public class User {
         return surgeries;
     }
 
-    public void setFitnessGoal(String fitnessGoal) {
+    public void setFitnessGoal(FitnessPlan.FitnessGoal fitnessGoal) {
         this.fitnessGoal = fitnessGoal;
     }
 
-    public void setFitnessLevel(String fitnessLevel) {
+    public void setFitnessLevel(FitnessPlan.FitnessLevel fitnessLevel) {
         this.fitnessLevel = fitnessLevel;
     }
 
